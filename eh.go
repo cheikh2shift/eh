@@ -36,6 +36,13 @@ func Err(err error) Error {
 
 func Log(err error) {
 
+	// return early,
+	// enable function to
+	// be used as a utility.
+	if err == nil {
+		return
+	}
+
 	u := callerPC(3)
 	fs := runtime.CallersFrames([]uintptr{u})
 	f, _ := fs.Next()
