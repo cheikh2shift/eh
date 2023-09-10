@@ -14,6 +14,10 @@ func callerPC(depth int) uintptr {
 	return pcs[0]
 }
 
+// Err accepts an error and
+// returns a variable with type `Error`.
+// Use this method to get the location
+// where an error is constructed/initialized
 func Err(err error) Error {
 
 	u := callerPC(3)
@@ -48,6 +52,10 @@ func Log(err error) {
 	log.Println(err.Error())
 }
 
+// CodeReference is embedded
+// within type error. It stores
+// the line, file and function
+// that invoked the `Err` function
 type CodeReference struct {
 	line     int
 	file     string
@@ -71,6 +79,12 @@ type Error struct {
 	err error
 }
 
+func (f Error) GetError() error {
+	return f.err
+}
+
+// Error helps the `Error` type
+// satisfy Go's error interface.
 func (f Error) Error() string {
 	return fmt.Sprintf(
 		"error : %s [%s:%v [%s]]",

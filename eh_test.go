@@ -26,3 +26,29 @@ func TestErr(t *testing.T) {
 	}
 
 }
+
+func TestErrUseCase(t *testing.T) {
+
+	var err2, err3, err4 error
+
+	if err2 != nil {
+		t.Log(eh.Err(err2))
+	}
+
+	if err3 != nil {
+		t.Log(eh.Err(err3))
+	}
+
+	err1 := eh.Err(
+		errors.New("Test err"),
+	)
+
+	if err1.GetLine() != 42 {
+		t.Fatalf("Expecting line number %v got %v", 42, err1.GetLine())
+	}
+
+	if err4 != nil {
+		t.Log(eh.Err(err4))
+	}
+
+}
