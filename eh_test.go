@@ -46,8 +46,8 @@ func TestErrUseCase(t *testing.T) {
 		errors.New("Test err"),
 	)
 
-	if err1.GetLine() != 42 {
-		t.Fatalf("Expecting line number %v got %v", 42, err1.GetLine())
+	if err1.GetLine() != 45 {
+		t.Fatalf("Expecting line number %v got %v", 45, err1.GetLine())
 	}
 
 	if err4 != nil {
