@@ -1,6 +1,8 @@
 # eh
 Error handling library. regenerates error message alongside the line of code that caused it.
 
+Think of it as adding more information to an error.
+
 ### Installation
 
 To add `eh` to your project, run the following command:
@@ -63,4 +65,4 @@ Please note that placing this within an abstraction will not work as intended; t
 
  I plan on using this package for future projects because there are times where my functions have multiple errors and I need a way to determine which line is setting the error. 
 
-Check out the documentation here:
+Check out the documentation [here](https://pkg.go.dev/github.com/cheikh2shift/eh)
