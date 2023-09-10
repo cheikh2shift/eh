@@ -27,6 +27,9 @@ func TestErr(t *testing.T) {
 
 }
 
+// This function demonstrates how this
+// package can be useful in determining the
+// origin of an error.
 func TestErrUseCase(t *testing.T) {
 
 	var err2, err3, err4 error
