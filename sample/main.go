@@ -27,5 +27,14 @@ func run() error {
 
 	err2 := eh.Err(errors.New("Error 2"))
 
+	logError(errors.New("Error 5"))
+
 	return err2
+}
+
+func logError(err error) {
+	log.Println(
+		//
+		eh.Err(err, 4),
+	)
 }

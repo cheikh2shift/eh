@@ -18,9 +18,16 @@ func callerPC(depth int) uintptr {
 // returns a variable with type `Error`.
 // Use this method to get the location
 // where an error is constructed/initialized
-func Err(err error) Error {
+func Err(err error, depth ...int) Error {
 
-	u := callerPC(3)
+	var u uintptr
+
+	if len(depth) == 0 {
+		u = callerPC(3)
+	} else {
+		u = callerPC(depth[0])
+	}
+
 	fs := runtime.CallersFrames([]uintptr{u})
 	f, _ := fs.Next()
 

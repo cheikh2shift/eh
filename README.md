@@ -61,8 +61,18 @@ $ go run main.go
 ### How it works?
 After discovering slog's `AddSource` flag, I decided to look around the code base to determine how they were doing it. You can determine how this is done by looking at the source code in this repository; the idea is simple, the line number where you call the helper functions will be determined as the origin of the call. 
 
-Please note that placing this within an abstraction will not work as intended; the line number within the abstracted function will be called each time. I plan on solving this in the future by making the depth level configurable.
+Please note that placing this within an abstraction will not work as intended; the line number within the abstracted function will be called each time. I plan on solving this in the future by making the depth level configurable. To Add an abstraction, please make sure to change the depth value to 4, as shown in the code below.
 
+```
+func logError(err error) {
+	log.Println(
+		//
+		eh.Err(err, 4),
+	)
+}
+```
+
+If you have another abstraction calling this abstract, you may need to set the value to 5.
 
  I plan on using this package for future projects because there are times where my functions have multiple errors and I need a way to determine which line is setting the error. 
 
